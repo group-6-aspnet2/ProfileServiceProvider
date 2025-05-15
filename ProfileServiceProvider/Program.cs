@@ -1,3 +1,5 @@
+using Business.Interfaces;
+using Business.Services;
 using Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IProfileService, ProfileService>();
 
 
 builder.Services.AddDbContext<DataContext>(options =>

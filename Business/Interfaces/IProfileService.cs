@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Models;
 
-namespace Business.Interfaces
+namespace Business.Interfaces;
+
+public interface IProfileService
 {
-    interface IProfileService
-    {
-    }
+    Task<UserProfileModel?> GetAsync(int userId);
+    Task<UserProfileModel> CreateAsync(CreateProfileModel model, int userId);
 }
