@@ -1,5 +1,17 @@
-﻿namespace Business.Services;
+﻿using Business.Interfaces;
+using Domain.Models;
 
-public class ProfileService
+namespace Business.Services;
+
+public class ProfileService : IProfileService
 {
+    public Task<UserProfileModel> CreateAsync(CreateProfileModel model, int userId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<UserProfileModel> GetAsync(int userId)
+    {
+        throw new NotImplementedException();
+    }
 }
