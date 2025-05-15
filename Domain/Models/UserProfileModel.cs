@@ -1,6 +1,6 @@
 ﻿namespace Domain.Models;
 
-public class UserProfile
+public class UserProfileModel
 {
     public int UserId { get; set; }
     public string FirstName { get; set; } = null!;
