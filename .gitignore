@@ -1,0 +1,18 @@
+# Visual Studio cache
+.vs/
+*.user
+*.suo
+
+# Byggmappar
+bin/
+obj/
+
+# Databasfiler
+*.mdf
+*.ldf
+
+# Andra tillfälliga filer
+*.log
+*.db
+*.DS_Store
+*.vsidx
