@@ -10,9 +10,23 @@ namespace Presentation.Controllers
     {
         private readonly IProfileService _profileService = profileService;
 
-    [HttpGet("{userId}")]
-        public async Task<IActionResult> Get(int userId)
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
+            var profiles = await _profileService.GetAllAsync();
+            if(profiles == null || !profiles.Any())
+                return NotFound("No profiles found.");
+
+            return Ok(profiles);
+        }
+
+
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> Get(string userId)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+                return BadRequest("User ID cannot be null or empty.");
+
             var profile = await _profileService.GetAsync(userId);
             if (profile == null)
                 return NotFound();
@@ -21,7 +35,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost("{userId}")]
-        public async Task<IActionResult> Create(int userId, [FromBody] CreateProfileModel model)
+        public async Task<IActionResult> Create(string userId, [FromBody] CreateProfileModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Invalid profile data.");
@@ -30,5 +44,6 @@ namespace Presentation.Controllers
 
             return Ok(result);
         }
+
     }
 }

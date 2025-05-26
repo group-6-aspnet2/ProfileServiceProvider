@@ -42,7 +42,7 @@ public class ProfileServiceBusHandler : IProfileServiceBusHandler
         {
             var data = JsonSerializer.Deserialize<AccountCreatedMessage>(body);
 
-            if (data is not null && int.TryParse(data.UserId, out var userId))
+            if (data != null && !string.IsNullOrWhiteSpace(data.UserId))
             {
                 var model = new CreateProfileModel
                 {
@@ -53,8 +53,8 @@ public class ProfileServiceBusHandler : IProfileServiceBusHandler
                     Role = "User"
                 };
 
-                await _profileService.CreateAsync(model, userId);
-                Console.WriteLine("[ServiceBus] Profile created for user " + userId);
+                await _profileService.CreateAsync(model, data.UserId);
+                Console.WriteLine("[ServiceBus] Profile created for user " + data.UserId);
             }
 
             await args.CompleteMessageAsync(args.Message);

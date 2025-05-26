@@ -3,6 +3,7 @@ using Data.Contexts;
 using Data.Entities;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace Business.Services;
 
@@ -10,7 +11,7 @@ public class ProfileService(DataContext context) : IProfileService
 {
     private readonly DataContext _context = context;
 
-    public async Task<CreateProfileResult> CreateAsync(CreateProfileModel model, int userId)
+    public async Task<CreateProfileResult> CreateAsync(CreateProfileModel model, string userId)
     {
         var entity = new UserProfileEntity
         {
@@ -41,7 +42,7 @@ public class ProfileService(DataContext context) : IProfileService
         };
     }
 
-    public async Task<UserProfileModel?> GetAsync(int userId)
+    public async Task<UserProfileModel?> GetAsync(string userId)
     {
         var entity = await _context.UserProfiles.FirstOrDefaultAsync(p => p.UserId == userId);
 
@@ -57,5 +58,30 @@ public class ProfileService(DataContext context) : IProfileService
             PostalCode = entity.PostalCode,
             Role = entity.Role
         };
+    }
+
+    public async Task<IEnumerable<UserProfileModel>> GetAllAsync()
+    {
+        try
+        {
+            var entities = await _context.UserProfiles.ToListAsync();
+
+            var models= entities.Select(e => new UserProfileModel
+            {
+                UserId = e.UserId,
+                FirstName = e.FirstName,
+                LastName = e.LastName,
+                Address = e.Address,
+                PostalCode = e.PostalCode,
+                Role = e.Role
+            });
+            return models;
+
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return null!;
+        }
     }
 }

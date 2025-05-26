@@ -4,6 +4,7 @@ namespace Business.Interfaces;
 
 public interface IProfileService
 {
-    Task<UserProfileModel?> GetAsync(int userId);
-    Task<CreateProfileResult> CreateAsync(CreateProfileModel model, int userId);
+    Task<UserProfileModel?> GetAsync(string userId);
+    Task<CreateProfileResult> CreateAsync(CreateProfileModel model, string userId);
+    Task<IEnumerable<UserProfileModel>> GetAllAsync();
 }

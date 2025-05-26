@@ -3,7 +3,7 @@
 public class UserProfileEntity
 {
     public int Id { get; set; }
-    public int UserId { get; set; }
+    public string UserId { get; set; } = null!;
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public string FullName => $"{FirstName} {LastName}";
