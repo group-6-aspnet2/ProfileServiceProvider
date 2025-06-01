@@ -24,3 +24,6 @@ ProfileServiceProvider is an ASP.NET Core Web API for managing user profile data
 **GET** `/api/profile/{userId}`  
 Returns the profile for the specified user.
 
+![image](https://github.com/user-attachments/assets/8dff1ba7-6faf-49e3-a8af-af709e867c07)
+
+
