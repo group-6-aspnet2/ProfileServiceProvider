@@ -1,28 +1,31 @@
-# ProfileServiceProvider
-Overview
-ProfileServiceProvider is an ASP.NET Core Web API for managing user profile data such as name, address, postal code, and role.
+ProfileServiceProvider
+🧾 Overview
+ProfileServiceProvider is an ASP.NET Core Web API that handles user profile management, including fields such as first name, last name, address, postal code, and role.
 
-Technologies
+⚙️ Technologies Used
 ASP.NET Core Web API
 
 Entity Framework Core
 
-xUnit & Moq (for unit testing)
+xUnit and Moq (unit testing)
 
-Swagger (for API documentation)
+Swagger (API documentation)
 
-How to Run
+▶️ How to Run the API
 Open the solution in Visual Studio.
 
-Set the Presentation project as the startup project.
+Set the Presentation project as the Startup Project.
 
-Press F5 or run the project to launch Swagger UI.
+Press F5 or use dotnet run to launch the API.
 
-How to Run Tests
-Right-click the Business.Tests project.
+Open Swagger UI at:
+https://localhost:{port}/swagger
 
-Select Run Tests.
+🧪 Running Tests
+Right-click on the Business.Tests project.
 
-API Example
-GET /api/profile/{userId} – Returns a profile for the specified user.
+Choose Run Tests or use the Test Explorer.
 
+📌 API Example
+GET /api/profile/{userId}
+Returns the profile for the specified user.
