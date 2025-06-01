@@ -27,5 +27,5 @@ ProfileServiceProvider is an ASP.NET Core Web API for managing user profile data
 ---
 
 ## Sequence Diagram – Create Profile via Service Bus
+![image](https://github.com/user-attachments/assets/8532fd91-e13f-406b-a986-639d2afc4b64)
 
-![Sequence diagram showing how AccountService triggers profile creation](./04086786-f9f3-4f5a-be54-d96503e71c83.png)
